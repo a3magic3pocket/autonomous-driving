@@ -4,3 +4,6 @@
 [submodule "server/Ultra-Fast-Lane-Detection-v2"]
 	path = server/Ultra-Fast-Lane-Detection-v2
 	url = https://github.com/a3magic3pocket/Ultra-Fast-Lane-Detection-v2.git
+[submodule "server/crnn"]
+	path = server/crnn
+	url = https://github.com/a3magic3pocket/crnn.pytorch.git

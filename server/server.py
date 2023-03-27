@@ -6,21 +6,18 @@ import asyncio
 import websockets
 import gzip
 import numpy as np
-import sys 
+import sys
+import io
 
 
 async def hello(websocket):
     compressed = await websocket.recv()
     data = gzip.decompress(compressed)
-
-    converted = np.frombuffer(data, dtype=np.uint32)
-    print(f'{converted.shape=}')
-    velocity_img = Image.fromarray(converted)
-    # velocity_img = await get_current_velocity(converted)
-    print(velocity_img)
-    # velocity_img.convert('L').save('testtest.jpeg')
-    import sys
-    sys.exit(1)
+    buffer = io.BytesIO(data)
+    img = Image.open(buffer)
+    velocity_img = await get_current_velocity(img)
+    # velocity_img = img
+    # velocity_img.show()
 
     greeting = f"Hello! got {velocity_img}"
     print(crnn_detect.detect(velocity_img, './crnn/checkpoints/exp1/best.ckpt'))

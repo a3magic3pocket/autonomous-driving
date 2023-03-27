@@ -132,3 +132,5 @@ dmypy.json
 img
 refined_img
 .vscode
+test_images
+cropped
